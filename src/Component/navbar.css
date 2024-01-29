@@ -1,0 +1,6 @@
+#navbarScroll {
+  justify-content: end;
+}
+.navbar-collapse {
+  flex-grow: 0 !important;
+}
