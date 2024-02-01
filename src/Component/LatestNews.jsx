@@ -1,14 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { api } from "../api";
 
 const LatestNews = () => {
   const [data, setData] = useState([]);
   const apiData = async () => {
     try {
-      const res = await axios.get(
-        "https://newsapi.org/v2/everything?q=tesla&from=2023-12-29&sortBy=publishedAt&apiKey=9304245108cb48588e10ace982990285"
-      );
+      const res = await axios.get(api);
+      // console.log(res);
       return res.data;
     } catch (e) {
       return console.log(e.message);
@@ -23,7 +23,7 @@ const LatestNews = () => {
     <div>
       <h3 className="m-5 text-danger"> Latest News</h3>
       <Container className="mt-5">
-        {data.slice(2, 7).map((item, index) => {
+        {data?.slice(2, 7).map((item, index) => {
           return (
             <a
               href={item.url}
@@ -35,7 +35,7 @@ const LatestNews = () => {
                 <Col>
                   <Col className="d-flex">
                     <div>
-                      <h4>{item.title}</h4>
+                      <h4>{item?.title}</h4>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing
                         elit. Quidem, non molestiae consequuntur, facere illo
